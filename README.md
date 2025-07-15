@@ -6,7 +6,7 @@ Easily add, list, edit, delete, and toggle your tasks — all from your terminal
 ## 🚀 Features
 
 - ✅ Add todos from the command line
-- 🗒️ List todos with `[ ]` / `[x]` status markers
+- 🗒️ List todos with `✅` / `❌` status markers
 - ✏️ Edit any todo by index
 - 🔁 Toggle completion status
 - ❌ Delete tasks
@@ -86,12 +86,6 @@ go run . -d 2
 ## 🙌 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.
-
----
-
-## 📃 License
-
-[MIT](LICENSE)
 
 ---
 
