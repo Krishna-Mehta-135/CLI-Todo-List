@@ -18,16 +18,28 @@ type CmdFlags struct {
 
 func NewCmdFlags() *CmdFlags {
 	cf := CmdFlags{}
-	flag.StringVar(&cf.Add, "add", "", "Add a new todo")
-	flag.StringVar(&cf.Edit, "edit", "", "Edit a todo by index and specify a new title. id:new_title")
-	flag.IntVar(&cf.Del, "del", -1, "Delete a todo by index")
-	flag.IntVar(&cf.Toggle, "toggle", -1, "Specify a todo by index to toggle")
-	flag.BoolVar(&cf.List, "list", false, "List all todos")
+	flag.StringVar(&cf.Add, "a", "", "Add a new todo")
+	flag.StringVar(&cf.Edit, "e", "", "Edit a todo by index and specify a new title. Format: index:new_title")
+	flag.IntVar(&cf.Del, "d", -1, "Delete a todo by index")
+	flag.IntVar(&cf.Toggle, "t", -1, "Toggle a todo by index")
+	flag.BoolVar(&cf.List, "l", false, "List all todos")
+
+	flag.Usage = func() {
+		fmt.Println("Todo CLI Usage:")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 
+	// If no arguments are provided (only the binary is run)
+	if len(os.Args) == 1 {
+		flag.Usage()
+		os.Exit(0)
+	}
+
 	return &cf
 }
+
 
 func (cf *CmdFlags) Execute(todos *Todos) {
 	switch {
